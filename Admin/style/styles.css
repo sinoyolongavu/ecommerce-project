@@ -1,0 +1,371 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures consistent box-sizing across all elements */
+}
+
+body {
+    font-family: Arial, sans-serif; /* Sets a clean and simple font */
+    background-color: #f4f4f4; /* Light gray background color for the body */
+    color: #333; /* Dark gray text for readability */
+}
+
+header {
+    text-align: center; /* Centers the header content */
+    margin: 20px 0; /* Adds vertical spacing around the header */
+}
+
+h1 {
+    font-size: 2.5rem; /* Large font size for the main heading */
+    margin-bottom: 10px; /* Adds space below the heading */
+}
+
+.filters {
+    display: flex; /* Uses flexbox for the filter buttons layout */
+    justify-content: center; /* Centers the filter buttons horizontally */
+    gap: 10px; /* Adds spacing between filter buttons */
+    margin-top: 10px; /* Adds some space above the filter section */
+}
+
+.filter-btn {
+    background-color: #333; /* Dark background color for buttons */
+    color: white; /* White text color */
+    border: none; /* Removes default button border */
+    padding: 10px 20px; /* Adds padding inside buttons */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    font-size: 1rem; /* Sets button text size */
+    border-radius: 5px; /* Rounds the corners of the buttons */
+    transition: background-color 0.3s ease; /* Smooth transition for background color on hover */
+}
+
+.filter-btn:hover {
+    background-color: #555; /* Darkens the button color on hover */
+}
+
+.filter-btn.active {
+    background-color: #007bff; /* Highlights the active filter button with a blue background */
+}
+
+.gallery {
+    display: grid; /* Uses grid layout for the gallery */
+    grid-template-columns: repeat(4, 1fr); /* Creates a 4-column grid */
+    gap: 20px; /* Adds space between gallery items */
+    padding: 20px; /* Adds padding around the gallery */
+    transition: all 0.5s ease; /* Smooth transition for changes in the gallery */
+}
+
+.gallery-item {
+    display: grid; /* Uses grid layout for each item */
+    grid-template-rows: auto 1fr; /* Adjusts the rows for the content */
+    overflow: hidden; /* Prevents content from overflowing the gallery item */
+}
+
+.card {
+    position: relative; /* Necessary for positioning overlay inside the card */
+    background-color: white; /* White background for each card */
+    border-radius: 8px; /* Rounded corners for the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for the card */
+    overflow: hidden; /* Ensures nothing overflows outside the card */
+    transform: scale(1); /* Initial scale of the card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition on hover */
+    height: 400px; /* Fixed height for all cards */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Slightly enlarges the card on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increases shadow depth on hover */
+}
+
+.card img {
+    width: 100%; /* Ensures the image fills the width of the card */
+    height: 200px; /* Fixed height for the image inside the card */
+    object-fit: cover; /* Ensures the image covers the area without distorting */
+    display: block; /* Prevents any space below the image */
+}
+.card-overlay {
+    position: absolute; /* Positions overlay inside the card */
+    top: 0;
+    left: 0;
+    width: 100%; /* Covers the entire card */
+    height: 100%; /* Full height of the card */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+    color: white; /* White text color for overlay content */
+    display: flex; /* Uses flexbox to center the overlay content */
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease; /* Smooth fade-in on hover */
+    z-index: 0; /* Lower the overlay's z-index */
+}
+
+.card:hover .card-overlay {
+    opacity: 1; /* Makes the overlay visible when the card is hovered */
+}
+
+.card-content {
+    padding: 15px; /* Adds padding inside the content area of the card */
+    text-align: center; /* Centers the text inside the content */
+    
+}
+
+.card-content h3 {
+    font-size: 1.2rem; /* Sets the title font size */
+    margin: 10px 0; /* Adds margin above and below the title */
+}
+
+.category {
+    background-color: #007bff; /* Blue background for the category label */
+    color: white; /* White text for the category label */
+    padding: 5px 10px; /* Padding inside the label */
+    border-radius: 5px; /* Rounded corners for the label */
+    font-size: 0.9rem; /* Smaller font size for the label */
+    margin-bottom: 10px; /* Adds space below the category label */
+}
+
+.description {
+    font-size: 0.9rem; /* Smaller font size for the description */
+    color: #666; /* Light gray text color */
+}
+
+/* Buttons */
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    position: relative; /* Ensures the buttons stay above the overlay */
+    z-index: 2; /* Higher z-index to stay above the overlay */
+}
+
+.add-to-cart, .add-to-wishlist {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.add-to-wishlist {
+    background-color: #28a745;
+}
+
+.add-to-cart:hover, .add-to-wishlist:hover {
+    opacity: 0.8;
+}
+
+/* General Styles for the Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns by default (desktop) */
+    gap: 20px; /* Space between items */
+}
+
+/* Tablet View (2 columns) */
+@media (max-width: 1024px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+    }
+}
+
+/* Mobile View (1 column) */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: 1fr; /* 1 column for mobile */
+    }
+}
+
+.create-new-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.create-new-btn:hover {
+    background-color: #0056b3;
+}
+
+
+/* Edit Button */
+.edit-btn {
+    background-color: #007bff; /* Blue for Edit button */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Delete Button */
+.delete-btn {
+    background-color: #dc3545; /* Red for Delete button */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.delete-btn:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+/* Modal styles should be correct */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close-btn {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 15px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    color: #333;
+    text-decoration: none;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ff6f61;
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 20px;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-left, .footer-center, .footer-right {
+    flex-basis: 30%;
+    margin-bottom: 20px;
+}
+
+.footer-left h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.footer-left p {
+    font-size: 1rem;
+}
+
+.footer-center h4, .footer-right h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.footer-center ul {
+    list-style-type: none;
+}
+
+.footer-center ul li {
+    margin-bottom: 10px;
+}
+
+.footer-center ul li a {
+    color: rgb(35, 157, 227);
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.footer-center ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.social-icon:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    font-size: 0.9rem;
+    color: #ccc;
+}

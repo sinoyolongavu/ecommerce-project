@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReflectaHome Product</title>
+    <link rel="stylesheet" href="/Admin/style/styles.css"> <!-- Link to the external CSS stylesheet -->
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+     <!-- Bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+ <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+            <img src="/Images/logo-no-background.png" alt="ReflectaHome Logo" style="height: 40px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html"><i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Users.html"><i class="fas fa-users"></i> Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="products.html"><i class="fas fa-tag"></i> Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="orders.html"><i class="fas fa-truck"></i> Orders</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="website.html"><i class="fas fa-globe"></i> website</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/Homepage/home.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Manage Section Indicator -->
+<div class="container mt-3">
+    <div class="alert alert-info text-center" role="alert">
+        <strong>You are currently managing the orders!</strong>
+    </div>
+</div>
+
+ <!-- Orders Page Content -->
+ <div class="container mt-4">
+    <h2>Orders</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Order ID</th>
+                <th>Customer Name</th>
+                <th>Products</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="orders-list">
+            <!-- Orders will be dynamically populated here by JS -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal for Order Details -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orderModalLabel">Order Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Order ID:</strong> <span id="modalOrderId"></span></p>
+                <p><strong>Customer Name:</strong> <span id="modalCustomerName"></span></p>
+                <p><strong>Status:</strong> <span id="modalOrderStatus"></span></p>
+                <ul id="modalProductList">
+                    <!-- Products will be listed here -->
+                </ul>
+                <p><strong>Total:</strong> <span id="modalOrderTotal"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Footer... -->
+ <footer class="footer">
+    <div class="footer-content">
+        <div class="footer-left">
+            <h3>ReflectaHome</h3>
+            <p>Transform your space with our beautiful mirrors.</p><br><br>
+            <p>Powered by</p>
+            
+            <!-- Life Choices link -->
+            <a class="navbar-brand" href="https://lifechoices.co.za/">
+                <img src="/Images/lifechoices.png" alt="Sponsor Logo" style="height: 30px; margin-top: 5px;">
+            </a>
+        
+            <!-- Life Choices Academy link -->
+            <a class="navbar-brand" href="https://lifechoicesacademy.com/">
+                <img src="/images/lca-2.webp" alt="Sponsor Logo" style="height: 30px; margin-top: 5px;">
+            </a>
+        </div>
+
+        <div class="footer-center">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="/QuickLinks/about.html">About Us</a></li>
+                <li><a href="/QuickLinks/Report abuse.html">Report abuse</a></li>
+                <li><a href="/QuickLinks/Return Policy.html">Return Policy</a></li>
+                <li><a href="/QuickLinks/Shipping & Payment.html">Shipping & Payment Info</a></li>
+                
+            </ul>
+        </div>
+
+        <div class="footer-right">
+            <h4>Follow Us</h4>
+            <div class="social-links">
+                <a href="#" class="social-icon">Facebook</a>
+                <a href="#" class="social-icon">Instagram</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 ReflectaHome. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    fetchOrders();
+});
+
+// Assuming 1 USD = 18 ZAR for conversion
+const USD_TO_ZAR = 18;
+
+function fetchOrders() {
+    // Simulated dummy data for orders
+    const dummyOrders = [
+        {
+            id: 1,
+            order_id: "ORD12345",
+            customer_name: "John Doe",
+            products: [
+                { name: "half-moon", image: "/Admin/images/half-moon.jpg", quantity: 2 },
+                { name: "round-beatrice", image: "/Admin/images/round-beatrice.jpg", quantity: 1 }
+            ],
+            total: 150, // USD
+            status: "Shipped"
+        },
+        {
+            id: 2,
+            order_id: "ORD12346",
+            customer_name: "Jane Smith",
+            products: [
+                { name: "square-4.1", image: "/Admin/images/square-4.1.jpg", quantity: 3 }
+            ],
+            total: 180, // USD
+            status: "Pending"
+        },
+    ];
+    const ordersList = document.getElementById('orders-list');
+
+    dummyOrders.forEach(order => {
+        const row = document.createElement('tr');
+        const productImages = order.products.map(product => 
+            `<img src="${product.image}" alt="${product.name}" style="height: 40px; margin-right: 5px;">`
+        ).join('');
+
+        row.innerHTML = `
+            <td>${order.id}</td>
+            <td>${order.order_id}</td>
+            <td>${order.customer_name}</td>
+            <td>${productImages}</td>
+            <td>R${(order.total * USD_TO_ZAR).toFixed(2)}</td> <!-- Converted to ZAR -->
+            <td>${order.status}</td>
+            <td><button class="btn btn-primary" onclick="viewOrderDetails(${order.id})">View</button></td>
+        `;
+        ordersList.appendChild(row);
+    });
+}
+
+// Function to show the order details in the modal
+function viewOrderDetails(orderId) {
+    const order = getOrderById(orderId); // Find the order by ID
+
+    // Fill the modal with order details
+    document.getElementById("modalOrderId").textContent = order.order_id;
+    document.getElementById("modalCustomerName").textContent = order.customer_name;
+    document.getElementById("modalOrderStatus").textContent = order.status;
+
+    const modalProductList = document.getElementById("modalProductList");
+    modalProductList.innerHTML = ""; // Clear any previous content
+
+    // Add the products to the modal
+    order.products.forEach(product => {
+        const productItem = document.createElement("li");
+        productItem.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" style="height: 40px; margin-right: 5px;">
+            ${product.name} (x${product.quantity})
+        `;
+        modalProductList.appendChild(productItem);
+    });
+
+    document.getElementById("modalOrderTotal").textContent = `R${(order.total * USD_TO_ZAR).toFixed(2)}`;
+
+    // Show the modal
+    var myModal = new bootstrap.Modal(document.getElementById('orderModal'));
+    myModal.show();
+}
+
+// Helper function to get order by ID
+function getOrderById(orderId) {
+    const dummyOrders = [
+        {
+            id: 1,
+            order_id: "ORD12345",
+            customer_name: "John Doe",
+            products: [
+                { name: "half-moon", image: "/Admin/images/half-moon.jpg", quantity: 2 },
+                { name: "round-beatrice", image: "/Admin/images/round-beatrice.jpg", quantity: 1 }
+            ],
+            total: 150, // USD
+            status: "Shipped"
+        },
+        {
+            id: 2,
+            order_id: "ORD12346",
+            customer_name: "Jane Smith",
+            products: [
+                { name: "square-4.1", image: "/Admin/images/square-4.1.jpg", quantity: 3 }
+            ],
+            total: 180, // USD
+            status: "Pending"
+        },
+    ];
+
+    return dummyOrders.find(order => order.id === orderId);
+}
+
+
+
+</script> <!-- External JS file -->
+</body>
+</html>
