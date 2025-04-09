@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReflectaHome - About Us</title>
-    <link rel="stylesheet" href="/Styles/style.css"> 
+    <link rel="stylesheet" href="/ReflectaHome/Styles/style.css"> 
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -60,18 +60,18 @@
         <div class="footer-center">
             <h4>Quick Links</h4>
             <ul>
-                <li><a href="/QuickLinks/about.html">About Us</a></li>
-                <li><a href="/QuickLinks/Report abuse.html">Report abuse</a></li>
-                <li><a href="/QuickLinks/Return Policy.html">Return Policy</a></li>
-                <li><a href="/QuickLinks/Shipping & Payment.html">Shipping & Payment Info</a></li>
+                <li><a href="/ReflectaHome/QuickLinks/about.html">About Us</a></li>
+                <li><a href="/ReflectaHome/QuickLinks/Report abuse.html">Report abuse</a></li>
+                <li><a href="/ReflectaHome/QuickLinks/Return Policy.html">Return Policy</a></li>
+                <li><a href="/ReflectaHome/QuickLinks/Shipping & Payment.html">Shipping & Payment Info</a></li>
             </ul>
         </div>
 
         <div class="footer-right">
             <h4>Follow Us</h4>
             <div class="social-links">
-                <a href="#" class="social-icon">Facebook</a>
-                <a href="#" class="social-icon">Instagram</a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i> Instagram</a>
             </div>
         </div>
     </div>

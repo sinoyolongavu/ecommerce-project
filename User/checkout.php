@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReflectaHome - Update Account</title>
-    <link rel="stylesheet" href="/Styles/style.css"> 
+    <link rel="stylesheet" href="/ReflectaHome/Styles/style.css"> 
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,7 +17,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="home.html">
-                <img src="/Images/logo-no-background.png" alt="ReflectaHome Logo" style="height: 40px;">
+                <img src="/ReflectaHome/Images/logo-no-background.png" alt="ReflectaHome Logo" style="height: 40px;">
             </a>
         
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,19 +26,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="user-dashboard.html"><i class="fas fa-home"></i> Home</a>
+                        <a class="nav-link" href="user-dashboard.php"><i class="fas fa-home"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="user-account.html"><i class="fas fa-user"></i> My Account</a>
+                        <a class="nav-link active" href="user-account.php"><i class="fas fa-user"></i> My Account</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="orders.html"><i class="fas fa-truck"></i> Orders</a>
+                        <a class="nav-link" href="orders.php"><i class="fas fa-truck"></i> Orders</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count"></span></a>
+                        <a class="nav-link" href="cart.php"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count"></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Homepage/home.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <a class="nav-link" href="/ReflectaHome/Homepage/home.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
                     </li>
                 </ul>
             </div>
@@ -81,9 +81,7 @@
             <div class="payment-options">
                 <input type="radio" name="payment-method" value="credit-card" id="credit-card" checked>
                 <label for="credit-card">Credit or Debit Card</label>
-                <input type="radio" name="payment-method" value="paypal" id="paypal">
-                <label for="paypal">PayPal</label>
-            </div>
+                
         </section>
 
         <!-- Credit Card Info -->
@@ -129,18 +127,18 @@
         <div class="footer-center">
             <h4>Quick Links</h4>
             <ul>
-                <li><a href="/QuickLinks/about.html">About Us</a></li>
-                <li><a href="/QuickLinks/Report abuse.html">Report abuse</a></li>
-                <li><a href="/QuickLinks/Return Policy.html">Return Policy</a></li>
-                <li><a href="/QuickLinks/Shipping & Payment.html">Shipping & Payment Info</a></li>
+                <li><a href="/ReflectaHome/QuickLinks/about.php">About Us</a></li>
+                <li><a href="/ReflectaHome/QuickLinks/Report abuse.php">Report abuse</a></li>
+                <li><a href="/ReflectaHome/QuickLinks/Return Policy.php">Return Policy</a></li>
+                <li><a href="/ReflectaHome/QuickLinks/Shipping & Payment.php">Shipping & Payment Info</a></li>
             </ul>
         </div>
 
         <div class="footer-right">
             <h4>Follow Us</h4>
             <div class="social-links">
-                <a href="#" class="social-icon">Facebook</a>
-                <a href="#" class="social-icon">Instagram</a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i> Instagram</a>
             </div>
         </div>
     </div>
@@ -154,64 +152,87 @@
     <script src="app.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            if (cart.length === 0) {
-                window.location.href = 'cart.html'; // Redirect if no items in cart
-                return;
+       document.addEventListener("DOMContentLoaded", function() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    if (cart.length === 0) {
+        window.location.href = 'cart.php'; // Redirect if no items in cart
+        return;
+    }
+
+    const checkoutItemsContainer = document.querySelector('.checkout-items');
+    let total = 0;
+
+    cart.forEach(item => {
+        total += item.price * item.quantity;
+        checkoutItemsContainer.innerHTML += `
+            <div class="checkout-item d-flex align-items-center mb-3">
+                <img src="${item.image}" alt="${item.name}" class="cart-image" style="width: 80px;">
+                <div class="checkout-item-details ms-3">
+                    <h5>${item.name}</h5>
+                    <p class="price">R${item.price.toFixed(2)}</p>
+                    <p>Quantity: ${item.quantity}</p>
+                </div>
+            </div>
+        `;
+    });
+
+    document.querySelector('.order-summary p').textContent = `Total: R${total.toFixed(2)}`;
+
+    // Handle form submission for checkout
+    document.getElementById('submit-btn').addEventListener('click', function(event) {
+        event.preventDefault();
+
+        // Validate form fields
+        let isValid = true;
+        const fields = ['name', 'email', 'address', 'phone'];
+        fields.forEach(field => {
+            const fieldValue = document.getElementById(field).value.trim();
+            if (!fieldValue) {
+                document.getElementById(`${field}-error`).style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById(`${field}-error`).style.display = 'none';
             }
-
-            const checkoutItemsContainer = document.querySelector('.checkout-items');
-            let total = 0;
-
-            cart.forEach(item => {
-                total += item.price * item.quantity;
-                checkoutItemsContainer.innerHTML += `
-                    <div class="checkout-item d-flex align-items-center mb-3">
-                        <img src="${item.image}" alt="${item.name}" class="cart-image" style="width: 80px;">
-                        <div class="checkout-item-details ms-3">
-                            <h5>${item.name}</h5>
-                            <p class="price">R${item.price.toFixed(2)}</p>
-                            <p>Quantity: ${item.quantity}</p>
-                        </div>
-                    </div>
-                `;
-            });
-
-            document.querySelector('.order-summary p').textContent = `Total: R${total.toFixed(2)}`;
-
-            // Handle form submission for checkout
-            document.getElementById('submit-btn').addEventListener('click', function(event) {
-                event.preventDefault();
-
-                // Validate form fields
-                let isValid = true;
-                const fields = ['name', 'email', 'address', 'phone'];
-                fields.forEach(field => {
-                    const fieldValue = document.getElementById(field).value.trim();
-                    if (!fieldValue) {
-                        document.getElementById(`${field}-error`).style.display = 'block';
-                        isValid = false;
-                    } else {
-                        document.getElementById(`${field}-error`).style.display = 'none';
-                    }
-                });
-
-                if (!isValid) {
-                    return;
-                }
-
-                // Simulate payment success (You can replace this with actual payment handling code)
-                let isPaymentSuccessful = true;
-                if (isPaymentSuccessful) {
-                    localStorage.removeItem('cart');
-                    document.getElementById('success-message').style.display = 'block';
-                    document.getElementById('submit-btn').textContent = 'Order Completed';
-                } else {
-                    alert('Payment failed. Please try again.');
-                }
-            });
         });
+
+        if (!isValid) {
+            return;
+        }
+
+        // Simulate payment success 
+        let isPaymentSuccessful = true;
+        if (isPaymentSuccessful) {
+            const orderId = 'ORD' + Date.now(); // Generate a unique order ID
+            const orderDetails = {
+                orderId: orderId,
+                status: 'Processing',
+                products: cart,
+                total: total,
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                address: document.getElementById('address').value,
+                phone: document.getElementById('phone').value,
+                courier: '', // tracking courier 
+                trackingNumber: '', //  tracking number
+            };
+
+            // Save the order in localStorage
+            let orders = JSON.parse(localStorage.getItem("orders")) || [];
+            orders.push(orderDetails);
+            localStorage.setItem("orders", JSON.stringify(orders));
+
+            // Clear the cart after successful checkout
+            localStorage.removeItem('cart');
+
+            // Show success message
+            document.getElementById('success-message').style.display = 'block';
+            document.getElementById('submit-btn').textContent = 'Order Completed';
+        } else {
+            alert('Payment failed. Please try again.');
+        }
+    });
+});
+
 
         // PayPal Button Integration
         paypal.Buttons({

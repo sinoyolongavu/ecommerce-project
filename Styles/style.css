@@ -29,12 +29,12 @@
 }
 
 .navbar-nav .nav-link:hover {
-    color: #ff6f61;
+    color: #34282c;
 }
 
 /* Hero Section Styling */
 .hero {
-    background-color: darkgrey;
+    background-color: #2c3539;
     background-size: cover;
     background-position: center;
     color: white;
@@ -54,18 +54,18 @@
 
 .hero .cta-btn {
     padding: 12px 25px;
-    background-color: #ff6f61;
-    color: white;
+    background-color:   whitesmoke;
+    color: black;
     text-decoration: none;
     font-size: 1.2rem;
     border-radius: 5px;
 }
 
 .hero .cta-btn:hover {
-    background-color: #ff4a37;
+    background-color: white;
 }
 
-/* Product Section Styling
+/*Product Section Styling */
 .product-section {
     padding: 50px 20px;
     text-align: center;
@@ -73,10 +73,48 @@
 }
 
 .product-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
+    font-size: 3rem;
+    margin-bottom: 15px;
     color: #333;
+    text-align: center;
 }
+
+/* Header Section */
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 50px 0;
+}
+
+header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between filter buttons */
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #34282c;
+    color: white;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #34282c;
+}
+
 
 .product-list {
     display: flex;
@@ -200,169 +238,89 @@
     color: #ccc;
 }
 
-/*  signup-in.html */
-
-.signup-in-section {
-    padding: 80px 20px;
-    text-align: center;
-    color: white;
-}
 
 .signup-in-card {
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 8px;
+    background-color: #fff; /* Changed to white */
+    border-radius: 12px; /* Slightly more rounded edges */
     width: 90%;
     max-width: 400px;
     margin: 0 auto;
     padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .signup-in-card h2 {
     font-size: 2rem;
     margin-bottom: 20px;
+    color: #333; /* Dark color for better readability */
 }
 
 .signup-in-card form .form-label {
     font-size: 1rem;
-    color: #ccc;
+    color: #666; /* Lighter gray for labels */
 }
 
 .signup-in-card form .form-control {
     margin-bottom: 15px;
     font-size: 1rem;
-    border-radius: 5px;
+    border-radius: 8px; /* More rounded input fields */
+    padding: 12px;
+    border: 1px solid #ddd; /* Light border color */
+    color: #333; /* Dark text for inputs */
 }
 
 .signup-in-card .btn-primary {
-    background-color: #ff6f61;
-    border-color: #ff6f61;
+    background-color:#34282c; /* Blue color for the button */
+    border-color: #34282c;
+    border-radius: 25px; /* Almost round button */
+    padding: 12px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
 }
 
 .signup-in-card .btn-primary:hover {
-    background-color: #ff4a37;
+    background-color: #2c3539; /* Darker blue on hover */
+    border-color: #0056b3;
 }
 
-.social-login-buttons button {
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-}
-
-.social-login-buttons .btn-facebook {
-    background-color: #3b5998;
-    color: white;
-}
-
-.social-login-buttons .btn-google {
-    background-color: #db4437;
-    color: white;
-}
-
-.social-login-buttons button:hover {
-    opacity: 0.9;
-}
-/* Wishlist Page CSS */
-.wishlist-container {
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-  }
-  
-  h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  /* Wishlist Items */
-  .wishlist-items {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .wishlist-item {
-    display: flex;
-    justify-content: space-between;
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .wishlist-item:hover {
-    transform: scale(1.05);
-  }
-  
-  .wishlist-item img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
-  .wishlist-item-details {
-    flex-grow: 1;
-    padding: 0 15px;
-  }
-  
-  .wishlist-item-details h3 {
-    font-size: 1.25rem;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .price {
-    color: #333;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-  }
-  
-  button {
-    padding: 10px 15px;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
+.signup-in-card .btn-send-login {
+    background-color:#34282c;/* Blue color for the send login button */
+    border-color: black;
+    border-radius: 25px; /* Rounded button */
+    padding: 12px;
     font-size: 1rem;
     transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #ff4a37;
-  }
-  
-  .wishlist-footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-  }
-  
-  .wishlist-footer button {
-    font-size: 1.1rem;
-  }
-  
-  .wishlist-footer .empty-wishlist-btn {
-    background-color: #dc3545;
-  }
-  
-  .wishlist-footer .empty-wishlist-btn:hover {
-    background-color: #c82333;
-  }
-  
-  .wishlist-footer .continue-shopping-btn {
-    background-color: black;
-  }
-  
+    margin-top: 15px;
+}
+
+.signup-in-card .btn-send-login:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-color: #0056b3;
+}
+
+.signup-in-card .alternative-options p {
+    color: #666; /* Lighter color for text in the alternative options section */
+}
+
+.signup-in-card .alternative-options a {
+    color: #007bff; /* Blue link color */
+}
+
+.signup-in-card .alternative-options a:hover {
+    text-decoration: underline;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 150px; /* Adjust size based on your logo */
+    height: auto;
+}
+
+
 /* Orders Section Styling */
 .orders-section {
     padding: 50px 20px;
@@ -515,7 +473,7 @@ button {
 }
 
 button:hover {
-    background-color: #ff4a37;
+    background-color:#34282c;
 }
 
 .cart-footer {
@@ -529,11 +487,11 @@ button:hover {
 }
 
 .cart-footer .empty-cart-btn {
-    background-color: #dc3545;
+    background-color: #34282c;
 }
 
 .cart-footer .empty-cart-btn:hover {
-    background-color: #c82333;
+    background-color:#34282c;
 }
 
 .cart-footer .continue-shopping-btn {
@@ -604,7 +562,7 @@ button:hover {
         }
 
         .submit-btn {
-            background-color: #28a745;
+            background-color:#34282c;
             color: #fff;
             padding: 12px 20px;
             border-radius: 5px;
@@ -614,11 +572,11 @@ button:hover {
         }
 
         .submit-btn:hover {
-            background-color: #218838;
+            background-color: #25383c;
         }
 
         #success-message {
-            background-color: #28a745;
+            background-color: #34282c;
             color: #fff;
             padding: 20px;
             border-radius: 5px;
@@ -731,7 +689,7 @@ button:hover {
         }
         
         .category {
-            background-color: #007bff; /* Blue background for the category label */
+            background-color: #2c3539; /* background for the category label */
             color: white; /* White text for the category label */
             padding: 5px 10px; /* Padding inside the label */
             border-radius: 5px; /* Rounded corners for the label */
@@ -746,7 +704,7 @@ button:hover {
         
         .add-to-cart, .add-to-wishlist {
             padding: 10px;
-            background-color: #007BFF;
+            background-color:#34282c;
             color: white;
             border: none;
             cursor: pointer;
@@ -755,7 +713,7 @@ button:hover {
         }
         
         .add-to-wishlist {
-            background-color: #28a745;
+            background-color: #25383c
         }
         
         .add-to-cart:hover, .add-to-wishlist:hover {
@@ -779,6 +737,93 @@ button:hover {
 html {
     scroll-behavior: smooth;
 }
+
+/* Styling for toggling between forms */
+.signup-in-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/ReflectaHome/Images/back.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Ensure it takes full viewport height */
+ }  
+
+.signup-in-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px; /* Increased padding for a slightly bigger form */
+    border-radius: 10px;
+    width: 100%;
+    max-width: 450px; /* Increase the max width to make it slightly larger */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 650px; /* Slightly larger max height */
+    overflow-y: auto; /* Allow scrolling if the content exceeds the max height */
+}
+
+/* Adjustments for mobile and small screens */
+@media (max-width: 768px) {
+    .signup-in-card {
+        padding: 15px; /* Increased padding on smaller screens */
+        max-width: 90%;  /* Adjust width for smaller screens */
+        max-height: 550px; /* Slightly larger max height for mobile */
+    }
+}
+
+/* Adjustments for very small screens (e.g., under 480px) */
+@media (max-width: 480px) {
+    .signup-in-card {
+        padding: 12px; /* Less padding for very small screens */
+        max-width: 95%; /* Almost full width for very small screens */
+        max-height: 500px; /* Slightly larger max height */
+    }
+}
+
+/* Styling for toggle buttons */
+.toggle-btn {
+    text-align: center;
+    margin-top: 20px; /* Slightly more space between forms */
+}
+
+/* Form Fields */
+.form-control {
+    font-size: 15px; /* Increased font size for readability */
+    padding: 10px; /* Increased padding for inputs */
+}
+
+/* Styling for submit buttons */
+button {
+    padding: 12px 18px; /* Slightly larger button padding */
+    font-size: 16px; /* Increased font size for buttons */
+}
+
+/* Adjust footer content layout for smaller screens */
+@media (max-width: 768px) {
+    .footer-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        flex-basis: 100% !important;
+        text-align: center !important;
+    }
+
+    .footer-right {
+        order: 2 !important;
+    }
+
+    .footer-bottom {
+        margin-top: 20px !important;
+    }
+}
+
+
+
+
 
 
 

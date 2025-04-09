@@ -1,10 +1,17 @@
+<?php
+//Database connection file
+include_once 'db-inc.php';
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReflectaHome Product</title>
-    <link rel="stylesheet" href="/Admin/style/styles.css"> <!-- Link to the external CSS stylesheet -->
+    <link rel="stylesheet" href="/ReflectaHome/Admin/style/styles.css"> <!-- Link to the external CSS stylesheet -->
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -67,7 +74,7 @@
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.html">
-            <img src="/Images/logo-no-background.png" alt="ReflectaHome Logo" style="height: 40px;">
+            <img src="/ReflectaHome/Images/logo-no-background.png" alt="ReflectaHome Logo" style="height: 40px;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -75,29 +82,30 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="home.html"><i class="fas fa-home"></i> Home</a>
+                    <a class="nav-link" href="home.php"><i class="fas fa-home"></i> Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Users.html"><i class="fas fa-users"></i> Users</a>
+                    <a class="nav-link" href="Users.php"><i class="fas fa-users"></i> Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="products.html"><i class="fas fa-tag"></i> Product</a>
+                    <a class="nav-link active" href="products.php"><i class="fas fa-tag"></i> Product</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="orders.html"><i class="fas fa-truck"></i> Orders</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="website.html"><i class="fas fa-globe"></i> Website</a>
+                    <a class="nav-link" href="orders.php"><i class="fas fa-truck"></i> Orders</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/Homepage/home.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    <a class="nav-link" href="website.php"><i class="fas fa-globe"></i> website</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/ReflectaHome/Homepage/home.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </li>
             </ul>
         </div>
     </div>
-</nav> 
+</nav>
+
 
 <!-- Manage Section Indicator -->
 <div class="container mt-3">
@@ -145,34 +153,24 @@
         <div class="footer-left">
             <h3>ReflectaHome</h3>
             <p>Transform your space with our beautiful mirrors.</p><br><br>
-            <p>Powered by</p>
-            
-            <!-- Life Choices link -->
-            <a class="navbar-brand" href="https://lifechoices.co.za/">
-                <img src="/Images/lifechoices.png" alt="Sponsor Logo" style="height: 30px; margin-top: 5px;">
-            </a>
-        
-            <!-- Life Choices Academy link -->
-            <a class="navbar-brand" href="https://lifechoicesacademy.com/">
-                <img src="/images/lca-2.webp" alt="Sponsor Logo" style="height: 30px; margin-top: 5px;">
-            </a>
+           
         </div>
 
         <div class="footer-center">
             <h4>Quick Links</h4>
             <ul>
-                <li><a href="/QuickLinks/about.html">About Us</a></li>
-                <li><a href="/QuickLinks/Report abuse.html">Report abuse</a></li>
-                <li><a href="/QuickLinks/Return Policy.html">Return Policy</a></li>
-                <li><a href="/QuickLinks/Shipping & Payment.html">Shipping & Payment Info</a></li>
+                <li><a href="/ReflectaHome/QuickLinks/about.php">About Us</a></li>
+                <li><a href="/ReflectaHome/QuickLinks/Report abuse.php">Report abuse</a></li>
+                <li><a href="/ReflectaHome/QuickLinks/Return Policy.php">Return Policy</a></li>
+                <li><a href="/ReflectaHome/QuickLinks/Shipping & Payment.php">Shipping & Payment Info</a></li>
             </ul>
         </div>
 
         <div class="footer-right">
             <h4>Follow Us</h4>
             <div class="social-links">
-                <a href="#" class="social-icon">Facebook</a>
-                <a href="#" class="social-icon">Instagram</a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i> Instagram</a>
             </div>
         </div>
     </div>
@@ -180,6 +178,7 @@
         <p>&copy; 2025 ReflectaHome. All rights reserved.</p>
     </div>
 </footer>
+
 <script>
     // JavaScript to handle the form submission and simulate saving data
 

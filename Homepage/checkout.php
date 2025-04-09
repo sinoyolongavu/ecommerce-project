@@ -7,15 +7,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/Styles/style.css"> 
+    <link rel="stylesheet" href="/ReflectaHome/Styles/style.css"> 
 </head>
 <body>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="home.html">
-                <img src="/Images/logo-no-background.png" alt="ReflectaHome Logo" style="height: 40px;">
+            <a class="navbar-brand" href="home.php">
+                <img src="/ReflectaHome/Images/logo-no-background.png" alt="ReflectaHome Logo" style="height: 40px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -23,19 +23,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="home.html"><i class="fas fa-home"></i> Home</a>
+                        <a class="nav-link" href="home.php"><i class="fas fa-home"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="home.html#products"><i class="fas fa-store"></i> Products</a>
+                        <a class="nav-link" href="home.php#products"><i class="fas fa-store"></i> Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="orders.html"><i class="fas fa-truck"></i> Orders</a>
+                        <a class="nav-link" href="orders.php"><i class="fas fa-truck"></i> Orders</a>
                     </li>
                     <li class="nav-item">
-                         <a class="nav-link" href="signup-in.html"><i class="fas fa-user"></i> Sign Up / Sign In</a>
+                         <a class="nav-link" href="signup-in.php"><i class="fas fa-user"></i> Sign Up / Sign In</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count"></span></a>
+                        <a class="nav-link" href="cart.php"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count"></span></a>
                     </li>
                 </ul>
             </div>
@@ -120,28 +120,22 @@
             <div class="footer-left">
                 <h3>ReflectaHome</h3>
                 <p>Transform your space with our beautiful mirrors.</p><br><br>
-                <p>Powered by</p>
-                <a class="navbar-brand" href="https://lifechoices.co.za/">
-                    <img src="/Images/lifechoices.png" alt="Sponsor Logo" style="height: 30px; margin-top: 5px;">
-                </a>
-                <a class="navbar-brand" href="https://lifechoicesacademy.com/">
-                    <img src="/images/lca-2.webp" alt="Sponsor Logo" style="height: 30px; margin-top: 5px;">
-                </a>
+                
             </div>
             <div class="footer-center">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="/QuickLinks/about.html">About Us</a></li>
-                    <li><a href="/QuickLinks/Report abuse.html">Report abuse</a></li>
-                    <li><a href="/QuickLinks/Return Policy.html">Return Policy</a></li>
-                    <li><a href="/QuickLinks/Shipping & Payment.html">Shipping & Payment Info</a></li>
+                    <li><a href="/ReflectaHome/QuickLinks/about.php">About Us</a></li>
+                    <li><a href="/ReflectaHome/QuickLinks/Report abuse.php">Report abuse</a></li>
+                    <li><a href="/ReflectaHome/QuickLinks/Return Policy.php">Return Policy</a></li>
+                    <li><a href="/ReflectaHome/QuickLinks/Shipping & Payment.php">Shipping & Payment Info</a></li>
                 </ul>
             </div>
             <div class="footer-right">
                 <h4>Follow Us</h4>
                 <div class="social-links">
-                    <a href="#" class="social-icon">Facebook</a>
-                    <a href="#" class="social-icon">Instagram</a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i> Facebook</a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i> Instagram</a>
                 </div>
             </div>
         </div>
@@ -158,7 +152,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
             if (cart.length === 0) {
-                window.location.href = 'cart.html'; // Redirect if no items in cart
+                window.location.href = 'cart.php'; // Redirect if no items in cart
                 return;
             }
 

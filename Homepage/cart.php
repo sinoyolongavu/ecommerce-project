@@ -1,44 +1,44 @@
+<?php
+//Database connection file
+include_once 'db-inc.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReflectaHome - Update Account</title>
-    <link rel="stylesheet" href="/Styles/style.css"> 
-
-    <!-- Bootstrap CSS -->
+    <title>Your Cart - ReflectaHome</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/ReflectaHome/Styles/style.css">
 </head>
 <body>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="home.html">
-                <img src="/Images/logo-no-background.png" alt="ReflectaHome Logo" style="height: 40px;">
+            <a class="navbar-brand" href="home.php">
+                <img src="/ReflectaHome/Images/logo-no-background.png" alt="ReflectaHome Logo" style="height: 40px;">
             </a>
-        
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="user-dashboard.html"><i class="fas fa-home"></i> Home</a>
+                        <a class="nav-link" href="home.php#products"><i class="fas fa-store"></i> Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="user-account.html"><i class="fas fa-user"></i> My Account</a>
+                        <a class="nav-link" href="orders.php"><i class="fas fa-truck"></i> Orders</a>
+                    </li>
+                   <!-- Combined Sign Up/Sign In Link -->
+                    <li class="nav-item">
+                         <a class="nav-link" href="signup-in.php"><i class="fas fa-user"></i> Sign Up / Sign In</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="orders.html"><i class="fas fa-truck"></i> Orders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count"></span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Homepage/home.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <a class="nav-link" href="cart.php"><i class="fas fa-shopping-cart"></i> Cart</a>
                     </li>
                 </ul>
             </div>
@@ -54,7 +54,7 @@
 
         <div class="cart-footer mt-4 d-flex justify-content-between">
             <p><strong>Total:</strong> R6,000.00</p>
-            <button class="btn btn-primary" onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+            <button class="btn btn-primary" onclick="window.location.href='checkout.php'">Proceed to Checkout</button>
         </div>
     </div>
 
@@ -152,7 +152,7 @@
     });
     </script>
 
-    <!-- Footer Section -->
+     <!-- Footer Section -->
   <footer class="footer">
     <div class="footer-content">
         <div class="footer-left">
@@ -164,18 +164,18 @@
         <div class="footer-center">
             <h4>Quick Links</h4>
             <ul>
-                <li><a href="/QuickLinks/about.html">About Us</a></li>
-                <li><a href="/QuickLinks/Report abuse.html">Report abuse</a></li>
-                <li><a href="/QuickLinks/Return Policy.html">Return Policy</a></li>
-                <li><a href="/QuickLinks/Shipping & Payment.html">Shipping & Payment Info</a></li>
+                <li><a href="/ReflectaHome/QuickLinks/about.php">About Us</a></li>
+                <li><a href="/ReflectaHome/QuickLinks/Report abuse.php">Report abuse</a></li>
+                <li><a href="/ReflectaHome/QuickLinks/Return Policy.php">Return Policy</a></li>
+                <li><a href="/ReflectaHome/QuickLinks/Shipping & Payment.php">Shipping & Payment Info</a></li>
             </ul>
         </div>
 
         <div class="footer-right">
             <h4>Follow Us</h4>
             <div class="social-links">
-                <a href="#" class="social-icon">Facebook</a>
-                <a href="#" class="social-icon">Instagram</a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i> Instagram</a>
             </div>
         </div>
     </div>
@@ -184,5 +184,131 @@
     </div>
   </footer>
 
+  <style>
+/* Ensure that the body and html elements take full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* This will make the main content area grow and push footer down */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* The content section (main) should take the remaining space */
+.container {
+    flex: 1;
+}
+
+/* Footer styling */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* This will ensure the footer stays at the bottom */
+.footer .footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Footer sections (left, center, right) */
+.footer .footer-left, .footer .footer-center, .footer .footer-right {
+    width: 30%;
+}
+
+/* Footer left section styling */
+.footer .footer-left h3 {
+    font-size: 24px;
+    color: white;
+}
+
+/* Footer center and right section heading styling */
+.footer .footer-center h4, .footer .footer-right h4 {
+    font-size: 20px;
+    color: white;
+}
+
+/* Footer links styling */
+.footer .footer-center ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer .footer-center ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.footer .footer-center ul li a {
+    text-decoration: none;
+    color: #bbb;
+    font-weight: 500;
+}
+
+.footer .footer-center ul li a:hover {
+    color: white;
+}
+
+/* Footer bottom text styling */
+.footer .footer-bottom {
+    font-size: 14px;
+    margin-top: 20px;
+    color: #bbb;
+}
+
+/* Social media icons styling */
+.social-links {
+    display: flex;
+    justify-content: center; /* Center the social icons */
+    margin-top: 10px;
+}
+
+.social-links a {
+    margin: 0 10px; /* Adds space between the icons */
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: #ccc;
+}
+
+/* Responsive Design - Center the content in smaller screens */
+@media (max-width: 768px) {
+    /* Make the footer content stack vertically on smaller screens */
+    .footer .footer-content {
+        flex-direction: column;
+        align-items: center; /* Center content in the middle */
+        text-align: center;
+    }
+
+    .footer .footer-left, .footer .footer-center, .footer .footer-right {
+        width: 100%;
+        margin-bottom: 20px; /* Add some space between sections */
+    }
+
+    /* Ensure the social links are also centered */
+    .social-links {
+        justify-content: center; /* Keep the social icons centered */
+    }
+}
+</style>
+
+
+  
 </body>
 </html>
