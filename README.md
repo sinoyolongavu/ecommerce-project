@@ -5,7 +5,7 @@ Here’s the template filled out for your **ReflectaHome** e-commerce website pr
 # ReflectaHome E-commerce Website
 
 [![Screenshot of Homepage](![Screenshot 2025-04-09 101027](https://github.com/user-attachments/assets/d589d71a-bf31-4364-b14b-dec256c62e14)
-)](link/to/live_demo)  
+)] 
 [![Animated GIF of Adding to Cart](path/to/add_to_cart_animation.gif)](link/to/live_demo)
 
 A fully functional e-commerce website built by Sinoyolo Ngavu for the module 4 core project assignment. **ReflectaHome** offers a seamless shopping experience for customers to browse and purchase mirrors, with secure user authentication, order processing, and an admin panel for managing products and orders.
@@ -26,10 +26,10 @@ A fully functional e-commerce website built by Sinoyolo Ngavu for the module 4 c
 
 ## Technologies Used
 - **Front-end:** HTML, CSS, JavaScript
-- **Styling:** Bootstrap (or Custom CSS if applicable)
+- **Styling:** Bootstrap 
 - **Back-end:** PHP
 - **Database:** MySQL
-- **Other:** Composer (if dependencies are managed with Composer)
+  
 
 ## Setup Instructions
 
@@ -38,8 +38,7 @@ Follow these steps to run the **ReflectaHome** website on your local development
 1. **Prerequisites:**
     * PHP (version >= 7.4)
     * MySQL Server installed and running
-    * Composer (if dependencies are managed with Composer)
-    * Web server (e.g., Apache, Nginx)
+    * Web server (Apache)
 
 2. **Clone the Repository:**
     ```bash
@@ -115,4 +114,3 @@ Sinoyolo Ngavu
 
 ---
 
-Feel free to adjust any of the details as needed!
